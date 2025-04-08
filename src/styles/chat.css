@@ -1,0 +1,115 @@
+/* Chat specific styles */
+
+/* Code blocks styling */
+.prose code {
+  @apply bg-muted px-1 py-0.5 rounded text-sm font-mono;
+}
+
+.prose pre {
+  @apply bg-muted p-4 rounded-md overflow-x-auto my-4;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0 text-sm leading-relaxed;
+  white-space: pre;
+}
+
+/* Message bubbles */
+.message-bubble {
+  @apply max-w-[80%] px-4 py-2 rounded-lg;
+  word-wrap: break-word;
+}
+
+.message-bubble-user {
+  @apply bg-primary text-primary-foreground rounded-tr-none;
+}
+
+.message-bubble-assistant {
+  @apply bg-muted rounded-tl-none;
+}
+
+/* Thinking indicator */
+.thinking-indicator {
+  @apply flex space-x-1 items-center;
+}
+
+.thinking-dot {
+  @apply h-2 w-2 bg-current rounded-full;
+  animation: blink 1.4s infinite both;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animation-delay-600 {
+  animation-delay: 0.6s;
+}
+
+@keyframes blink {
+  0%, 80%, 100% { 
+    transform: scale(0.5);
+    opacity: 0.4;
+  }
+  40% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Scrollbars */
+.styled-scrollbar::-webkit-scrollbar {
+  @apply w-2;
+}
+
+.styled-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.styled-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/20 rounded-full;
+}
+
+.styled-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/30;
+}
+
+/* Connection status indicator */
+.connection-indicator {
+  @apply flex items-center space-x-2 px-2 py-1 rounded-full text-xs;
+}
+
+.connection-indicator-dot {
+  @apply h-2 w-2 rounded-full;
+}
+
+.connection-connected {
+  @apply text-green-500;
+}
+
+.connection-connecting {
+  @apply text-yellow-500;
+}
+
+.connection-disconnected {
+  @apply text-red-500;
+}
+
+/* Animate the blinking cursor */
+.typing-cursor {
+  @apply inline-block h-4 w-0.5 bg-current;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { 
+    opacity: 1; 
+  }
+  50% { 
+    opacity: 0; 
+  }
+}

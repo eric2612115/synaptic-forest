@@ -1,36 +1,381 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Synaptic Forest
 
-## Getting Started
+## 項目概述
 
-First, run the development server:
+Synaptic Forest是一個革命性的智慧知識生態系統，基於動態演化的知識圖譜，能夠模擬自然生態系統和認知過程。系統能自主學習、自我反思、自我組織和演化，為用戶提供深度智能輔助和知識增強服務。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+本前端項目旨在創建一個視覺震撼、交互流暢且直觀易用的界面，既能展示系統的強大功能，又能提供清晰的用戶體驗。特別適合投資者演示和專業用戶使用。
+
+## 技術堆疊
+
+- **核心框架**: React 20+, Next.js 15+
+- **語言**: TypeScript 5.3+
+- **狀態管理**: Redux Toolkit & RTK Query
+- **WebSocket客戶端**: Socket.IO Client
+- **UI/組件庫**: shadcn/ui + Tailwind CSS
+- **3D渲染/可視化**: 
+  - Three.js / React Three Fiber - 3D圖譜渲染
+  - D3.js - 數據可視化
+  - react-force-graph - 知識網絡可視化
+- **動畫**: Framer Motion
+- **表單處理**: React Hook Form + Zod
+- **API客戶端**: Axios + SWR
+
+## 架構概述
+
+項目採用模塊化設計，遵循Next.js 15的App Router架構：
+
+```
+synaptic-forest/
+├── app/                    # 主應用目錄
+│   ├── (auth)/             # 認證相關路由
+│   ├── dashboard/          # 用戶控制台
+│   ├── forest/             # 知識森林視圖
+│   ├── conversation/       # 對話界面
+│   └── api/                # API路由處理
+├── components/             # 共享組件
+│   ├── ui/                 # 基礎UI組件
+│   ├── forest/             # 知識森林視覺化組件
+│   ├── conversation/       # 對話相關組件
+│   └── viz/                # 各種可視化組件
+├── lib/                    # 工具函數和庫
+│   ├── api/                # API客戶端
+│   ├── websocket/          # WebSocket客戶端
+│   ├── graph/              # 圖譜處理邏輯
+│   └── viz/                # 可視化工具函數
+├── hooks/                  # 自定義React Hooks
+├── store/                  # Redux狀態管理
+├── types/                  # TypeScript類型定義
+└── public/                 # 靜態資源
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 功能需求
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. 用戶認證與管理
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **登入/註冊**: 實現基於JWT的認證流程
+- **用戶配置**: 用戶可以設置偏好和系統選項
+- **角色管理**: 支持不同類型用戶（管理員、普通用戶、訪客）
 
-## Learn More
+### 2. 知識森林視覺化
 
-To learn more about Next.js, take a look at the following resources:
+#### 2.1 動態知識圖譜
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **多維視圖**:
+  - 3D知識生態系統視圖（默認）
+  - 網絡視圖（著重關係）
+  - 集群視圖（著重主題分組）
+  - 時間視圖（著重演化過程）
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **節點表示**:
+  - 形狀/大小反映節點類型和重要性
+  - 顏色反映主題或活躍度
+  - 透明度反映確定性或休眠狀態
+  - 節點間連線反映關係類型和強度
 
-## Deploy on Vercel
+- **交互功能**:
+  - 放大/縮小/平移
+  - 點擊節點顯示詳情
+  - 拖動重新排列
+  - 搜索和過濾
+  - 重點路徑高亮
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### 2.2 知識演化視覺化
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **時間軸視圖**:
+  - 滑動時間條控制
+  - 關鍵時間點標記
+  - 按時間播放知識演化動畫
+  - 比較不同時間點的知識狀態
+
+- **生命效果**:
+  - 新知識"生長"效果
+  - 知識連接"蔓延"效果
+  - 抽象化"結晶"效果
+  - 休眠知識"褪色"效果
+
+#### 2.3 反思系統可視化
+
+- **反思過程顯示**:
+  - 視覺化反思四階段（觀察、評估、決策、執行）
+  - 顯示當前反思焦點區域
+  - 能量流動視覺化
+  - 反思結果高亮
+
+- **指標儀表板**:
+  - 知識質量指標圖表
+  - 連接性、深度、廣度等指標
+  - 健康狀態視覺化
+
+### 3. 對話與互動系統
+
+#### 3.1 高級對話界面
+
+- **聊天界面**:
+  - 響應式設計，支持多設備
+  - 富文本消息顯示
+  - 代碼塊、表格等格式支持
+  - 消息狀態指示器（發送中、已讀等）
+
+- **思考過程顯示**:
+  - 實時顯示AI思考步驟
+  - 漸進式顯示生成內容
+  - 思考模式可切換
+
+- **知識關聯指示**:
+  - 對話中提到的概念與知識圖譜的實時關聯
+  - 視覺化顯示知識提取過程
+  - 顯示新知識如何融入現有網絡
+
+#### 3.2 語境感知功能
+
+- **相關知識推薦**:
+  - 基於當前對話顯示相關知識節點
+  - 推薦可能有用但未提及的相關知識
+  - 智能排序，優先顯示最相關內容
+
+- **知識溯源**:
+  - 從知識節點追溯到源對話
+  - 從對話追溯到形成的知識
+
+### 4. 系統狀態與控制
+
+#### 4.1 能量系統界面
+
+- **能量指示器**:
+  - 視覺化顯示當前能量水平
+  - 能量分配和消耗統計
+  - 能量再生預測
+
+- **能量控制**:
+  - 調整不同操作的能量分配
+  - 設置能量使用優先級
+  - 觸發能量再生或保留
+
+#### 4.2 系統健康狀態
+
+- **健康儀表板**:
+  - 系統整體健康指標
+  - 潛在問題警報
+  - 優化建議
+
+- **維護控制**:
+  - 手動觸發反思循環
+  - 調整系統參數
+  - 知識修剪控制
+
+### 5. 專業模式與演示模式
+
+#### 5.1 專業用戶界面
+
+- **高級配置**:
+  - 自定義視覺化參數
+  - 設置系統行為偏好
+  - 導出/導入知識
+
+- **深度分析工具**:
+  - 知識圖譜結構分析
+  - 主題演化趨勢分析
+  - 用戶-系統互動分析
+
+#### 5.2 演示模式
+
+- **引導式體驗**:
+  - 預設的演示流程
+  - 突出系統亮點
+  - 控制台（隱藏式）供演示者控制
+
+- **投資者視圖**:
+  - 著重商業價值的界面
+  - 關鍵指標和增長數據
+  - 直觀展示系統能力
+
+## 用戶體驗需求
+
+### 1. 信息架構與導航
+
+- **清晰的導航系統**:
+  - 固定的主導航
+  - 上下文相關的子導航
+  - 麵包屑導航支持
+
+- **漸進式信息揭示**:
+  - 初始只顯示關鍵信息
+  - 詳細信息在互動時顯示
+  - 分層次的信息結構
+
+### 2. 響應式設計
+
+- **多設備支持**:
+  - 桌面（優先）
+  - 平板
+  - 大屏幕展示
+
+- **性能優化**:
+  - 漸進式加載
+  - 大數據集的虛擬化列表
+  - 3D視圖的性能調整選項
+
+### 3. 可訪問性
+
+- **無障礙設計**:
+  - 符合WCAG 2.1 AA標準
+  - 鍵盤導航支持
+  - 屏幕閱讀器兼容
+
+- **多語言支持**:
+  - 至少支持中文和英文
+  - 語言切換無需重載
+
+### 4. 視覺設計
+
+- **一致的設計語言**:
+  - 現代簡潔的界面
+  - 適當的留白
+  - 視覺層次分明
+
+- **品牌識別**:
+  - 獨特的視覺風格
+  - 一致的色彩系統
+  - 自定義的視覺隱喻
+
+## API集成
+
+系統將與後端API和WebSocket服務集成，基於提供的API文檔：
+
+### 1. REST API集成
+
+- **用戶認證**: JWT登入和管理
+- **會話管理**: 創建、獲取、刪除對話
+- **知識圖譜操作**: 獲取、搜索、查看節點詳情
+- **知識提取**: 提交內容進行知識提取
+- **反思系統**: 觸發反思循環、獲取狀態
+
+### 2. WebSocket集成
+
+- **聊天WebSocket**: 
+  - 實時消息交換
+  - 思考過程流式傳輸
+  - 消息狀態更新
+
+- **通知WebSocket**:
+  - 知識提取完成通知
+  - 反思循環更新
+  - 系統事件通知
+
+## 開發指南
+
+### 1. 代碼規範
+
+- 遵循TypeScript嚴格模式
+- 使用ESLint和Prettier保持代碼質量
+- 組件使用功能性組件和React Hooks
+- 使用命名約定：PascalCase用於組件，camelCase用於函數和變量
+
+### 2. 狀態管理
+
+- 使用Redux管理全局狀態
+- 使用SWR/React Query管理服務器狀態
+- 使用Context API管理局部共享狀態
+- 使用React Query和Socket.IO管理實時數據流
+
+### 3. 性能考量
+
+- 實現虛擬化列表和視圖
+- 使用React.memo和useMemo優化渲染性能
+- 實現3D視圖的LOD（細節層次）控制
+- 大型數據集採用分頁或無限滾動
+
+### 4. 測試策略
+
+- 組件測試: Jest + React Testing Library
+- E2E測試: Cypress
+- 視覺回歸測試: Percy或Chromatic
+- 性能基準測試: Lighthouse
+
+## 關鍵場景實現
+
+### 1. 知識演化演示（投資者亮點）
+
+- **階段1**: 從零開始建立知識
+  - 顯示初始對話
+  - 可視化初始提取過程
+  - 展示基本知識節點形成
+
+- **階段2**: 知識網絡形成
+  - 顯示連接建立過程
+  - 展示主題集群形成
+  - 演示最初的模式識別
+
+- **階段3**: 自主反思與優化
+  - 可視化反思過程
+  - 展示知識結構優化
+  - 新關聯發現
+
+- **階段4**: 抽象概念形成
+  - 展示抽象層出現
+  - 演示系統創建的見解
+  - 顯示知識網絡的立體結構
+
+### 2. 用戶旅程
+
+- **初始引導**:
+  - 歡迎流程
+  - 功能介紹
+  - 初始對話建議
+
+- **日常使用流**:
+  - 快速訪問最近對話
+  - 直觀切換知識視圖
+  - 簡化的反思控制
+
+- **高級探索流**:
+  - 深度搜索和過濾
+  - 知識時間線回溯
+  - 系統狀態微調
+
+## 後續擴展計劃
+
+- **多用戶協作**: 支持多用戶共同構建知識網絡
+- **知識導入/導出**: 與其他知識系統交換數據
+- **外部資源集成**: 連接網絡、文檔等外部信息源
+- **個性化界面**: 用戶可自定義界面布局和視覺風格
+- **移動應用**: 開發配套移動應用，隨時訪問知識網絡
+
+## 開發路線圖
+
+**第一階段 (基礎框架)**:
+- 設置Next.js應用框架
+- 實現基本認證流程
+- 建立API集成層
+- 開發基本UI組件庫
+
+**第二階段 (核心功能)**:
+- 實現對話界面
+- 開發基本知識圖譜視圖
+- 建立WebSocket連接
+- 實現基本用戶配置
+
+**第三階段 (高級視覺化)**:
+- 開發3D知識圖譜視圖
+- 實現時間線功能
+- 添加動態效果
+- 優化視覺體驗
+
+**第四階段 (系統集成)**:
+- 集成反思系統可視化
+- 實現能量管理界面
+- 開發系統健康儀表板
+- 添加知識溯源功能
+
+**第五階段 (優化與演示)**:
+- 性能優化
+- 添加演示模式
+- 開發引導式體驗
+- 實現投資者特定視圖
+
+## 結語
+
+Synaptic Forest前端項目旨在創建一個既直觀又震撼的界面，真實展現系統的革命性潛力。通過先進的可視化和流暢的交互，我們能讓用戶真切體驗到這個自主演化知識生態系統的強大能力。
+
+該界面不僅是一個工具，更是一個窗口，讓人窺見未來AI輔助認知的可能性，展示AI不僅能回答問題，更能與人類共同構建、演化知識，實現真正的智能共生。

@@ -1,0 +1,164 @@
+/* Basic animation keyframes */
+@keyframes pulse-glow {
+  0%, 100% { 
+    opacity: 0.3;
+    filter: blur(8px);
+  }
+  50% { 
+    opacity: 0.8;
+    filter: blur(4px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Custom animation for neural connection pathways */
+@keyframes neuron-pulse {
+  0%, 100% { 
+    opacity: 0.05;
+    filter: blur(4px);
+  }
+  50% { 
+    opacity: 0.15;
+    filter: blur(3px);
+  }
+}
+
+@keyframes synapse-firing {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.1;
+  }
+  40% {
+    transform: scale(1.3);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+}
+
+@keyframes neural-travel {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.1;
+  }
+}
+
+@keyframes knowledge-pulse {
+  0% {
+    box-shadow: 0 0 5px rgba(66, 133, 244, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(66, 133, 244, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(66, 133, 244, 0.3);
+  }
+}
+
+@keyframes neural-flash {
+  0%, 100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Animation classes */
+.neural-pulse {
+  animation: pulse-glow 3s infinite;
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+.knowledge-pulse {
+  animation: knowledge-pulse 4s infinite;
+}
+
+.neural-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: neural-travel 8s linear infinite;
+}
+
+.neural-flash {
+  animation: neural-flash 2s infinite;
+}
+
+/* Animation delay utilities */
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+.animation-delay-800 {
+  animation-delay: 800ms;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1000ms;
+}
+
+.animation-delay-1500 {
+  animation-delay: 1500ms;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2000ms;
+}
+
+/* Immersive neural background classes */
+.neuron-pulse {
+  animation: neuron-pulse 4s infinite;
+}
+
+.synapse-fire {
+  animation: synapse-firing 2s infinite;
+}
+
+.neural-grid-bg {
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(66, 133, 244, 0.08) 0%, transparent 25%),
+    radial-gradient(circle at 80% 20%, rgba(52, 168, 83, 0.08) 0%, transparent 35%),
+    radial-gradient(circle at 10% 80%, rgba(251, 188, 5, 0.08) 0%, transparent 35%),
+    linear-gradient(rgba(66, 133, 244, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(66, 133, 244, 0.05) 1px, transparent 1px);
+  background-size: 
+    100% 100%, 
+    100% 100%, 
+    100% 100%, 
+    50px 50px, 
+    50px 50px;
+  background-position: 
+    0 0, 
+    0 0, 
+    0 0, 
+    -25px -25px, 
+    -25px -25px;
+}
